@@ -2,35 +2,33 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 #if FEATURE_UNLOAD
-using System;
-
 namespace TSharp.Bundle
 {
   /// <summary>
-  /// Represents the method that will handle the <see cref="PluginLoader.Reloaded" /> event.
+  ///   Represents the method that will handle the <see cref="BundleLoader.Reloaded" /> event.
   /// </summary>
   /// <param name="sender">The object sending the event</param>
   /// <param name="eventArgs">Data about the event.</param>
-  public delegate void PluginReloadedEventHandler(object sender, PluginReloadedEventArgs eventArgs);
+  public delegate void BundleReloadedEventHandler(object sender, BundleReloadedEventArgs eventArgs);
 
   /// <summary>
-  /// Provides data for the <see cref="PluginLoader.Reloaded" /> event.
+  ///   Provides data for the <see cref="BundleLoader.Reloaded" /> event.
   /// </summary>
-  public class PluginReloadedEventArgs : EventArgs
+  public class BundleReloadedEventArgs : EventArgs
   {
     /// <summary>
-    /// Initializes <see cref="PluginReloadedEventArgs" />.
+    ///   Initializes <see cref="BundleReloadedEventArgs" />.
     /// </summary>
     /// <param name="loader"></param>
-    public PluginReloadedEventArgs(PluginLoader loader)
+    public BundleReloadedEventArgs(BundleLoader loader)
     {
       Loader = loader;
     }
 
     /// <summary>
-    /// The plugin loader
+    ///   The plugin loader
     /// </summary>
-    public PluginLoader Loader { get; }
+    public BundleLoader Loader { get; }
   }
 }
 #endif

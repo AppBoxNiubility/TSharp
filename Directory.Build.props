@@ -6,7 +6,7 @@
 		<SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
 		<SolutionReadme>$([System.IO.Path]::Combine("$(SolutionDir)","readme.md"))</SolutionReadme>
 		<ProjectReadme>$([System.IO.Path]::Combine("$(MSBuildProjectDirectory)","readme.md"))</ProjectReadme>
- 
+
 	</PropertyGroup>
 	<Choose>
 		<When Condition="Exists('$(ProjectReadme)')">
@@ -15,7 +15,7 @@
 			</PropertyGroup>
 			<ItemGroup>
 				<None Include="$(ProjectReadme)" Pack='True' PackagePath='/' Visible='True'>
-				 
+
 				</None>
 			</ItemGroup>
 		</When>
@@ -58,7 +58,7 @@
 
 	<Choose>
 		<When Condition="Exists('$(MSBuildProjectDirectory)app.ico')">
-			<PropertyGroup> 
+			<PropertyGroup>
 				<ApplicationIcon>$(MSBuildProjectDirectory)icon.png</ApplicationIcon>
 			</PropertyGroup>
 			<ItemGroup>
@@ -66,7 +66,7 @@
 			</ItemGroup>
 		</When>
 		<When Condition="Exists('$(SolutionDir)solution/app.ico')">
-			<PropertyGroup> 
+			<PropertyGroup>
 				<ApplicationIcon>$(SolutionDir)solution/icon.png</ApplicationIcon>
 			</PropertyGroup>
 			<ItemGroup>
@@ -74,7 +74,7 @@
 			</ItemGroup>
 		</When>
 		<When Condition="Exists('$(SolutionDir)app.ico')">
-			<PropertyGroup> 
+			<PropertyGroup>
 				<ApplicationIcon>$(SolutionDir)app.ico</ApplicationIcon>
 			</PropertyGroup>
 			<ItemGroup>
@@ -82,7 +82,6 @@
 			</ItemGroup>
 		</When>
 	</Choose>
-
 
 
 	<Target Name="TestMessage" AfterTargets="Build">
@@ -98,7 +97,7 @@
 		<!-- Use %(Item Name.Metadata Property Name) to 
          call the Message task once for each item.   -->
 		<!-- This will output each item on a separate line -->
-		<Message Text="%(None.Identity)" Importance="high"/>
+		<Message Text="%(None.Identity)" Importance="high" />
 
 	</Target>
 </Project>
