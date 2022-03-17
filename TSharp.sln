@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSharp", "src\TSharp\TSharp.csproj", "{98356497-8DC6-4F37-9202-D4FB0D29AA77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{854356F4-95A8-4FE6-8D74-0737AB3D61D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutions", "solutions", "{09D502F0-6B4C-420D-80BA-7F5EDF476A10}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		solution\EmitMapper.snk = solution\EmitMapper.snk
+		icon.png = icon.png
+		solution\public.props = solution\public.props
+		solution\publicKey.txt = solution\publicKey.txt
+		release-notes.txt = release-notes.txt
+		solution\sn_gen.bat = solution\sn_gen.bat
+		sync all.sh = sync all.sh
+		syncing.sh = syncing.sh
+		TSharp.sln.DotSettings = TSharp.sln.DotSettings
+		solution\version.props = solution\version.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{98356497-8DC6-4F37-9202-D4FB0D29AA77} = {854356F4-95A8-4FE6-8D74-0737AB3D61D5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E89DD13-A0DA-4321-8220-418A142195CC}
+	EndGlobalSection
+EndGlobal
