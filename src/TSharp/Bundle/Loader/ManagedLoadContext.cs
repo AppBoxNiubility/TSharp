@@ -20,9 +20,9 @@ internal class ManagedLoadContext : AssemblyLoadContext
   private readonly string _basePath;
   private readonly ICollection<string> _defaultAssemblies;
   private readonly AssemblyLoadContext _defaultLoadContext;
-  #if FEATURE_NATIVE_RESOLVER
+#if FEATURE_NATIVE_RESOLVER
   private readonly AssemblyDependencyResolver _dependencyResolver;
-  #endif
+#endif
   private readonly bool _lazyLoadReferences;
   private readonly bool _loadInMemory;
   private readonly string _mainAssemblyPath;
@@ -35,28 +35,28 @@ internal class ManagedLoadContext : AssemblyLoadContext
   private readonly string _unmanagedDllShadowCopyDirectoryPath;
 
   public ManagedLoadContext(string mainAssemblyPath,
-      IReadOnlyDictionary<string, ManagedLibrary> managedAssemblies,
-      IReadOnlyDictionary<string, NativeLibrary> nativeLibraries,
-      IReadOnlyCollection<string> privateAssemblies,
-      IReadOnlyCollection<string> defaultAssemblies,
-      IReadOnlyCollection<string> additionalProbingPaths,
-      IReadOnlyCollection<string> resourceProbingPaths,
-      AssemblyLoadContext defaultLoadContext,
-      bool preferDefaultLoadContext,
-      bool lazyLoadReferences,
-      bool isCollectible,
-      bool loadInMemory,
-      bool shadowCopyNativeLibraries)
-    #if FEATURE_UNLOAD
+    IReadOnlyDictionary<string, ManagedLibrary> managedAssemblies,
+    IReadOnlyDictionary<string, NativeLibrary> nativeLibraries,
+    IReadOnlyCollection<string> privateAssemblies,
+    IReadOnlyCollection<string> defaultAssemblies,
+    IReadOnlyCollection<string> additionalProbingPaths,
+    IReadOnlyCollection<string> resourceProbingPaths,
+    AssemblyLoadContext defaultLoadContext,
+    bool preferDefaultLoadContext,
+    bool lazyLoadReferences,
+    bool isCollectible,
+    bool loadInMemory,
+    bool shadowCopyNativeLibraries)
+#if FEATURE_UNLOAD
     : base(Path.GetFileNameWithoutExtension(mainAssemblyPath), isCollectible)
-  #endif
+#endif
   {
     if (resourceProbingPaths == null) throw new ArgumentNullException(nameof(resourceProbingPaths));
 
     _mainAssemblyPath = mainAssemblyPath ?? throw new ArgumentNullException(nameof(mainAssemblyPath));
-    #if FEATURE_NATIVE_RESOLVER
+#if FEATURE_NATIVE_RESOLVER
     _dependencyResolver = new AssemblyDependencyResolver(mainAssemblyPath);
-    #endif
+#endif
     _basePath = Path.GetDirectoryName(mainAssemblyPath) ?? throw new ArgumentException(nameof(mainAssemblyPath));
     _managedAssemblies = managedAssemblies ?? throw new ArgumentNullException(nameof(managedAssemblies));
     _privateAssemblies = privateAssemblies ?? throw new ArgumentNullException(nameof(privateAssemblies));
@@ -140,11 +140,11 @@ internal class ManagedLoadContext : AssemblyLoadContext
         // Swallow errors in loading from the default context
       }
 
-    #if FEATURE_NATIVE_RESOLVER
+#if FEATURE_NATIVE_RESOLVER
     var resolvedPath = _dependencyResolver.ResolveAssemblyToPath(assemblyName);
 
     if (!string.IsNullOrEmpty(resolvedPath) && File.Exists(resolvedPath)) return LoadAssemblyFromFilePath(resolvedPath);
-    #endif
+#endif
 
     // Resource assembly binding does not use the TPA. Instead, it probes PLATFORM_RESOURCE_ROOTS (a list of folders)
     // for $folder/$culture/$assemblyName.dll
@@ -190,12 +190,12 @@ internal class ManagedLoadContext : AssemblyLoadContext
   /// <returns></returns>
   protected override IntPtr LoadUnmanagedDll(string unmanagedDllName)
   {
-    #if FEATURE_NATIVE_RESOLVER
+#if FEATURE_NATIVE_RESOLVER
     var resolvedPath = _dependencyResolver.ResolveUnmanagedDllToPath(unmanagedDllName);
 
     if (!string.IsNullOrEmpty(resolvedPath) && File.Exists(resolvedPath))
       return LoadUnmanagedDllFromResolvedPath(resolvedPath, false);
-    #endif
+#endif
 
     foreach (var prefix in PlatformInformation.NativeLibraryPrefixes)
       if (_nativeLibraries.TryGetValue(prefix + unmanagedDllName, out var library))

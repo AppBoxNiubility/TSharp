@@ -113,15 +113,15 @@ public class AssemblyLoadContextBuilder
       _defaultLoadContext,
       _preferDefaultLoadContext,
       _lazyLoadReferences,
-      #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
       _isCollectible,
       _loadInMemory,
       _shadowCopyNativeLibraries);
-    #else
+#else
         false,
         false,
         false);
-    #endif
+#endif
   }
 
   /// <summary>
@@ -298,13 +298,13 @@ public class AssemblyLoadContextBuilder
       throw new ArgumentException("Argument must be a relative path.", nameof(probingPath));
   }
 
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   private bool _isCollectible;
   private bool _loadInMemory;
   private bool _shadowCopyNativeLibraries;
-  #endif
+#endif
 
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   /// <summary>
   ///   Enable unloading the assembly load context.
   /// </summary>
@@ -341,5 +341,5 @@ public class AssemblyLoadContextBuilder
 
     return this;
   }
-  #endif
+#endif
 }

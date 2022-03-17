@@ -21,8 +21,8 @@ using TSharp.Bundle.Loader;
 public class BundleLoader : IDisposable
 {
   private readonly BundleConfig _config;
-  private ManagedLoadContext _context;
   private readonly AssemblyLoadContextBuilder _contextBuilder;
+  private ManagedLoadContext _context;
   private volatile bool _disposed;
 
   /// <summary>
@@ -34,9 +34,9 @@ public class BundleLoader : IDisposable
     _config = config ?? throw new ArgumentNullException(nameof(config));
     _contextBuilder = CreateLoadContextBuilder(config);
     _context = (ManagedLoadContext)_contextBuilder.Build();
-    #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
     if (config.EnableHotReload) StartFileWatcher();
-    #endif
+#endif
   }
 
   /// <summary>
@@ -46,11 +46,11 @@ public class BundleLoader : IDisposable
   {
     get
     {
-      #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
       return _context.IsCollectible;
-      #else
+#else
         return false;
-      #endif
+#endif
     }
   }
 
@@ -148,7 +148,7 @@ public class BundleLoader : IDisposable
 
     _disposed = true;
 
-    #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
     if (_fileWatcher != null)
     {
       _fileWatcher.EnableRaisingEvents
@@ -163,10 +163,10 @@ public class BundleLoader : IDisposable
     _debouncer?.Dispose();
 
     if (_context.IsCollectible) _context.Unload();
-    #endif
+#endif
   }
 
-  #if !NETCOREAPP2_1
+#if !NETCOREAPP2_1
   /// <summary>
   ///   Sets the scope used by some System.Reflection APIs which might trigger assembly loading.
   ///   <para>
@@ -180,7 +180,7 @@ public class BundleLoader : IDisposable
   {
     return _context.EnterContextualReflection();
   }
-  #endif
+#endif
 
   /// <summary>
   ///   Load an assembly by name.
@@ -237,7 +237,7 @@ public class BundleLoader : IDisposable
 
     if (config.PreferSharedTypes) builder.PreferDefaultLoadContext(true);
 
-    #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
     if (config.IsUnloadable || config.EnableHotReload) builder.EnableUnloading();
 
     if (config.LoadInMemory)
@@ -245,12 +245,12 @@ public class BundleLoader : IDisposable
       builder.PreloadAssembliesIntoMemory();
       builder.ShadowCopyNativeLibraries();
     }
-    #endif
+#endif
 
     builder.IsLazyLoaded(config.IsLazyLoaded);
     foreach (var assemblyName in config.SharedAssemblies) builder.PreferDefaultLoadContextAssembly(assemblyName);
 
-    #if !FEATURE_NATIVE_RESOLVER
+#if !FEATURE_NATIVE_RESOLVER
       // In .NET Core 3.0, this code is unnecessary because the API, AssemblyDependencyResolver, handles parsing these files.
       var baseDir = Path.GetDirectoryName(config.MainAssemblyPath);
       var assemblyFileName = Path.GetFileNameWithoutExtension(config.MainAssemblyPath);
@@ -267,7 +267,7 @@ public class BundleLoader : IDisposable
       // runtime config file which is why we search for all files matching this extensions.
       foreach (var runtimeconfig in Directory.GetFiles(AppContext.BaseDirectory, "*.runtimeconfig.json"))
         builder.TryAddAdditionalProbingPathFromRuntimeConfig(runtimeconfig, true, out _);
-    #endif
+#endif
 
     return builder;
   }
@@ -276,7 +276,7 @@ public class BundleLoader : IDisposable
   {
     if (_disposed) throw new ObjectDisposedException(nameof(BundleLoader));
   }
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   /// <summary>
   ///   Create a plugin loader for an assembly file.
   /// </summary>
@@ -329,14 +329,14 @@ public class BundleLoader : IDisposable
         configure(config);
       });
   }
-  #endif
+#endif
 
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   private FileSystemWatcher? _fileWatcher;
   private Debouncer? _debouncer;
-  #endif
+#endif
 
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   /// <summary>
   ///   This event is raised when the plugin has been reloaded.
   ///   If <see cref="BundleConfig.EnableHotReload" /> was set to <c>true</c>,
@@ -404,5 +404,5 @@ public class BundleLoader : IDisposable
   {
     if (!_disposed) _debouncer?.Execute(Reload);
   }
-  #endif
+#endif
 }

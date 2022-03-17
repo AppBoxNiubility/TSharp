@@ -75,7 +75,7 @@ public class BundleConfig
   /// </seealso>
   public ICollection<AssemblyName> SharedAssemblies { get; protected set; } = new List<AssemblyName>();
 
-  #if FEATURE_UNLOAD
+#if FEATURE_UNLOAD
   private bool _isUnloadable;
 
   /// <summary>
@@ -118,5 +118,5 @@ public class BundleConfig
   /// </summary>
   public TimeSpan ReloadDelay { get; set; }
     = TimeSpan.FromMilliseconds(200);
-  #endif
+#endif
 }
