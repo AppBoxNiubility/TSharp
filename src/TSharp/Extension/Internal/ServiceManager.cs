@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Reflection;
-using TSharp.Core.Exceptions;
+using System.Reflection; 
 
 
 namespace TSharp.Core.Osgi.Internal
 {
-    /// <summary>
+  using Microsoft.Extensions.Logging;
+
+  /// <summary>
     /// 服务注册管理
     /// <para>2010/12/24</para>
     /// 	<para>THINKPADT61</para>
@@ -62,5 +63,7 @@ namespace TSharp.Core.Osgi.Internal
         }
 
         #endregion
+
+    
     }
 }

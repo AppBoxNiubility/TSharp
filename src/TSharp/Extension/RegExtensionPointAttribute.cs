@@ -1,5 +1,4 @@
-﻿using System;
-using TSharp.Core.Exceptions;
+﻿using System; 
 using TSharp.Core.Osgi.Internal;
 using System.Linq;
 

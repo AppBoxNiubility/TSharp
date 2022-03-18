@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Extension\ApplicationEventManager.cs" />
+    <Compile Remove="Extension\RegAppEventAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Extension\ApplicationEventManager.cs" />
+    <None Include="Extension\RegAppEventAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
