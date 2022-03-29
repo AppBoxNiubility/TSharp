@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutions", "solutions", "{
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		solution\EmitMapper.snk = solution\EmitMapper.snk
 		icon.png = icon.png
 		solution\public.props = solution\public.props
@@ -24,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutions", "solutions", "{
 		solution\version.props = solution\version.props
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSharp.Web", "TSharp.Web\TSharp.Web.csproj", "{9E911385-74A2-4392-B95E-9FC4B4346DAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSharp.Desktop", "TSharp.Desktop\TSharp.Desktop.csproj", "{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,12 +39,22 @@ Global
 		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98356497-8DC6-4F37-9202-D4FB0D29AA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E911385-74A2-4392-B95E-9FC4B4346DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E911385-74A2-4392-B95E-9FC4B4346DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E911385-74A2-4392-B95E-9FC4B4346DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E911385-74A2-4392-B95E-9FC4B4346DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{98356497-8DC6-4F37-9202-D4FB0D29AA77} = {854356F4-95A8-4FE6-8D74-0737AB3D61D5}
+		{9E911385-74A2-4392-B95E-9FC4B4346DAE} = {854356F4-95A8-4FE6-8D74-0737AB3D61D5}
+		{99F4A2CA-52DC-4577-8073-6ADBBE8EBB81} = {854356F4-95A8-4FE6-8D74-0737AB3D61D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E89DD13-A0DA-4321-8220-418A142195CC}
